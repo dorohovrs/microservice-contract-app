@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api.gateway:
+    container_name: api.gateway
+    build:
+      context: .
+    env_file:
+      - .env
+    networks:
+      - contract_app
+    ports:
+      - '${API_GATEWAY_PORT:-80}:80'
+
+networks:
+  contract_app:
+    driver: bridge
